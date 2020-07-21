@@ -8,7 +8,47 @@ export const Container = styled.div`
 export const FilterArea = styled.div`
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+
     justify-content: space-around;
     margin-top: 30px;
+
+    button {
+        background: none;
+        border: none;
+    }
     
+`
+
+
+export const Content = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 70px;
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+`
+
+
+export const Title = styled.div`
+    width: 100%;
+    border-bottom: 1px solid #1903B2;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    h3 {
+        color: #1903B2;
+        position: relative;
+        top: 30px;
+        background: #FFFFFF;
+        padding: 0 20px;
+    }
+
 `

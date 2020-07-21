@@ -3,15 +3,15 @@ import * as S from './styles';
 
 import filter from '../../assets/filter.png'
 
-function Footer() {
+function FilterCard({ title , actived }) {
   
     return (
-        <S.Container>
+        <S.Container actived={actived}>
            <img src={filter} alt="Filtro"/>
-           <span>Todos</span>
+           <span>{title}</span>
         </S.Container>
     )
 
 }
 
-export default Footer;
+export default FilterCard;

@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 260px;
     height: 60px;
-    background: #1903B2;  
+    background: ${ props => props.actived ? '#FF9900' : '#1903B2'};  
     padding: 10px;
+    cursor: pointer;
 
     border-radius: 25px;
 
@@ -22,6 +23,10 @@ export const Container = styled.div`
         font-weight: bold;
         align-self: flex-end;
         font-size: 19px;
+    }
+
+    &:hover {
+        background: #FF9900;
     }
 
 `
