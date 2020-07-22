@@ -18,7 +18,7 @@ function Home() {
 
     const [filterActived, setFilterActived] = useState('all');
     const [tasks, setTasks] = useState([]);
-    const [lateCount, setLateCount] = useState();
+    
 
     async function loadTask(){
 
@@ -29,28 +29,18 @@ function Home() {
         })
     }
 
-    async  function lateVerify(){
-        await api.get(`/task/filter/late/MM:MM:MM:SS:SS:SS`)
-        .then(response => {
-            setLateCount(response.data.length);
-            
-        })
-
-    }
-
     function Notification(){
         setFilterActived('late');
     }
 
     useEffect(()=> {
         loadTask();
-        lateVerify();
     }, [filterActived])
   
     return (
         <S.Container>
 
-        <Header lateCount={lateCount} clickNotification={Notification}/>
+        <Header clickNotification={Notification}/>
 
         <S.FilterArea>
 

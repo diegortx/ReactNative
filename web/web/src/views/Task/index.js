@@ -29,18 +29,6 @@ function Task({match}) {
     const [hour, setHour] = useState('');
     const [macaddress, setMacaddress] = useState('MM:MM:MM:SS:SS:SS');
 
-    
-
-
-    async  function lateVerify(){
-        await api.get(`/task/filter/late/MM:MM:MM:SS:SS:SS`)
-        .then(response => {
-            setLateCount(response.data.length);
-            
-        })
-
-    }
-
     async function LoadTaskDetails(){
         await  api.get(`/task/${match.params.id}`)
         .then(response => {
@@ -108,14 +96,13 @@ function Task({match}) {
     }
 
     useEffect(()=> {
-        lateVerify();
         LoadTaskDetails();
     }, [])
   
     return (
         <S.Container>
             { redirect && <Redirect to="/"/>}
-        <Header lateCount={lateCount}/>
+        <Header/>
 
 
         <S.Form>
