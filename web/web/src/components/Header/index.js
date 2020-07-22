@@ -3,6 +3,7 @@ import * as S from './style';
 import {Link} from 'react-router-dom';
 
 import api from '../../services/api';
+import isConnected from '../../utils/isConnected'
 
 import logo from '../../assets/logo.png';
 import bell from '../../assets/bell.png';
@@ -21,6 +22,12 @@ function Header( { clickNotification } ) {
         })
 
     }
+
+    async function Logout(){
+        localStorage.removeItem('@todo/macaddress');
+        window.location.reload();
+    }
+
     useEffect(() => {
         lateVerify();
     });
@@ -36,8 +43,13 @@ function Header( { clickNotification } ) {
                 <span className="divider"/>
                 <Link to="/task">NOVA TAREFA</Link>
                 <span className="divider"/>
-                <Link to="/qrcode"> SINCRONIZAR CELULAR </Link>
-                
+
+                { !isConnected ? 
+                    <Link to="/qrcode"> SINCRONIZAR CELULAR </Link>
+                    :
+                    <button type="button" onClick={Logout}> SAIR</button>
+                }
+                <span className="divider"/>
                 {
                     lateCount &&
                     <>

@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 
 //Conexao com a API
 import api from '../../services/api';
+import isConnected from '../../utils/isConnected';
 
 //Nossos componentes
 import Header from '../../components/Header';
@@ -14,6 +15,7 @@ import TypeIcons from '../../utils/typeIcons'
 
 import icoCalendar from '../../assets/calendar.png'
 import icoClock from '../../assets/clock.png'
+import isConneted from '../../utils/isConnected';
 
 
 function Task({match}) {
@@ -96,6 +98,10 @@ function Task({match}) {
     }
 
     useEffect(()=> {
+
+        if(!isConneted)
+            setRedirect(true);
+        
         LoadTaskDetails();
     }, [])
   

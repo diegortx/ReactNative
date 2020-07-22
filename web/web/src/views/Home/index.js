@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import * as S from './style';
 
 
 //Conexao com a API
 import api from '../../services/api';
+import isConnected from '../../utils/isConnected';
 
 //Nossos componentes
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import FilterCard from '../../components/Filter';
 import TaskCard from '../../components/TaskCard';
+import isConneted from '../../utils/isConnected';
 
 
 function Home() {
 
     const [filterActived, setFilterActived] = useState('all');
     const [tasks, setTasks] = useState([]);
-    
+    const [redirect, setRedirect] = useState(false);
 
     async function loadTask(){
 
@@ -35,10 +37,16 @@ function Home() {
 
     useEffect(()=> {
         loadTask();
-    }, [filterActived])
+
+        if(!isConnected)
+            setRedirect(true)
+
+    }, [filterActived, loadTask])
   
     return (
         <S.Container>
+
+        { redirect && <Redirect to='/qrcode'/>}
 
         <Header clickNotification={Notification}/>
 
