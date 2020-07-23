@@ -43,6 +43,9 @@ export const RightSide = styled.div`
             background: none;
             border: none;
             cursor: pointer;
+            font-size: 16px;
+            color: #FFF;
+            font-weight: bold;
         }
 
     #notification {
@@ -75,5 +78,7 @@ export const RightSide = styled.div`
         margin: 0 10px;
         color: #FFF;
     }
+
+
     
 `
